@@ -26,10 +26,24 @@ public function create()
 {
     return view('posts/create');
 }
+// 今回はユーザの入力データをDBのpostsテーブルにアクセスし保存する必要があるため、空のPostインスタンスを利用、
+// $request['post']を利用すると、postをキーにもつリクエストパラメータを取得することができます。
+// $requestのキーは、HTMLのFormタグ内で定義した各入力項目のname属性と一致
 public function store( Post $post, PostRequest $reqest)
 {
     $input = $reqest['post'];
     $post->fill($input)->save();
     return redirect('/posts/' .$post->id);
 }
+public function edit(post $post)
+{
+    return view('posts/edit')->with(['post'=>$post]);
 }
+public function update( Post $post, PostRequest $reqest)
+{
+    $input = $reqest['post'];
+    $post->fill($input)->save();
+    return redirect('/posts/' .$post->id);
+}
+}
+    
