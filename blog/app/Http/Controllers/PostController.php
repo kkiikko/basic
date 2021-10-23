@@ -45,5 +45,9 @@ public function update( Post $post, PostRequest $reqest)
     $post->fill($input)->save();
     return redirect('/posts/' .$post->id);
 }
+public function delete(Post $post)
+{
+    $post->delete();
+    return redirect('/');
 }
-    
+}
