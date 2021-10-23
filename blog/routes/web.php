@@ -19,4 +19,6 @@ Route::post('/posts' , 'PostController@store');
 Route::get('/posts/{post}/edit', 'PostController@edit');
 // ブログ投稿編集実行
 Route::put('/posts/{post}', 'PostController@update');
+Route::delete('/posts/', 'PostController@delete');
+
 

@@ -1,11 +1,12 @@
 <?php
 
 namespace App;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Post extends Model
-{
+{   use SoftDeletes;
     public function getByLimit(int $limit_count = 10)
 {
     // updated_atで降順に並べたあと、limitで件数制限をかける

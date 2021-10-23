@@ -16,13 +16,32 @@
              <div class='post'>
                   <h3><a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                  <p class='body'>{{$post->body}}</p>
+                 <form　action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post" style="display:inline">
+             @csrf
+             @method('DELETE')
+             <button type="button" onClick="deleteconfirm({{$post->id}})">DELETE</button>
+                 </form>
              </div> 
              @endforeach
          </div>
          <div class= 'paginate'> 
          {{ $posts->links() }}
          </div>
-        [<a href='/posts/create'>create</a>]
+          [<a href='/posts/create'>create</a>]
+        <script>
+            function deleteconfirm(id)
+             {
+              result =  window.confirm('削除しますか');
+              console.log(result)
+              if(result){
+                  
+                document.getElementById('form_'+ id).submit();
+                  
+              }
+              
+              
+             }
+        </script>
          
     </body>
 </html>
